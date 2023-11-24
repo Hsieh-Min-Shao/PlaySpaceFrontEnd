@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="./js/base.js"></script>
+  </head>
+  <body>
+    <div id="base">
+      <!-- 上方導航列 開始 -->
+      <img id="headerImg" src="./pic/動物吃雞封面圖 1.png" alt="" />
+      <header id="headerBar" class="flexWrap">
+        <nav id="headerBarHamburger" @click="togglePhoneNav">
+          <img @click="togglePhoneNav" src="./pic/hamburger.svg" />
+        </nav>
+        <nav id="headerBarIcon" class="flexAllCenter">P l a y S p a c e</nav>
+        <nav id="headerBarOption" class="flexWrap">
+          <p @click="page1Link">{{page1}}</p>
+          <p @click="page2Link">{{page2}}</p>
+          <p @click="page3Link">{{page3}}</p>
+          <p @click="page4Link">{{page4}}</p>
+          <p @click="page5Link">{{page5}}</p>
+        </nav>
+        <nav id="headerBarUserOperation">
+          <input type="text" />
+          <img id="headerBarUserOperationSearchIcon" @click="search" />
+          <img
+            id="headerBarUserOperationUserIcon"
+            :src="userIconSrc"
+            @click="userCenter"
+          />
+        </nav>
+      </header>
+      <!-- 彈窗程式碼 -->
+      <div class="popup-content" v-show="isUserCenterPopupOpen" ref="userCenter" >
+        <!-- Popup content -->
+        <p>{{popupMessage}}</p>
+      </div>
+      <!-- 上方導航列 結束 -->
+      <!-- 手機版選單 開始 -->
+      <div id="phoneNav" :style="{ left: isPhoneNavOpen ? '0' : '-200px' }">
+        <div id="phoneUserCenter">
+          <img
+            id="phoneUserOperationUserIcon"
+            :src="userIconSrc"
+            @click="userCenter"
+          />
+        </div>
+        <p @click="page1Link">{{page1}}</p>
+        <p @click="page2Link">{{page2}}</p>
+        <p @click="page3Link">{{page3}}</p>
+        <p @click="page4Link">{{page4}}</p>
+        <p @click="page5Link">{{page5}}</p>
+      </div>
+
+      <div
+        id="overlay"
+        @click="closePhoneNav"
+        :style="{ display: isPhoneNavOpen ? 'block' : 'none' }"
+      ></div>
+      <!-- 手機版選單 結束 -->
+      <div id="background">
+        <div id="backgroundLeftImg"></div>
+        <div id="backgroundRightImg"></div>
+        <!-- 主要區塊 開始 -->
+        <main></main>
+        <!-- 主要區塊 結束 -->
+      </div>
+    </div>
+  </body>
+</html>
