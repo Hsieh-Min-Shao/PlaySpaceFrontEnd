@@ -6,7 +6,10 @@
       <nav id="headerBarHamburger" @click="togglePhoneNav">
         <img @click="togglePhoneNav" src="/pic/base/hamburger.svg" />
       </nav>
-      <nav id="headerBarIcon" class="flexAllCenter">P l a y S p a c e</nav>
+      <nav id="headerBarIcon" class="flexAllCenter">
+        <!-- <img class="icon" src="/pic/base/logo.png" /> -->
+        P l a y S p a c e
+      </nav>
       <nav id="headerBarOption" class="flexWrap">
         <p @click="page1Link">{{ page1 }}</p>
         <p @click="page2Link">{{ page2 }}</p>
@@ -17,7 +20,11 @@
       <nav id="headerBarUserOperation">
         <input type="text" />
         <img id="headerBarUserOperationSearchIcon" @click="search" />
-        <img id="headerBarUserOperationUserIcon" :src="userIconSrc" @click="userCenter" />
+        <img
+          id="headerBarUserOperationUserIcon"
+          :src="userIconSrc"
+          @click="userCenter"
+        />
       </nav>
     </header>
     <!-- 彈窗程式碼 -->
@@ -29,7 +36,11 @@
     <!-- 手機版選單 開始 -->
     <div id="phoneNav" :style="{ left: isPhoneNavOpen ? '0' : '-200px' }">
       <div id="phoneUserCenter">
-        <img id="phoneUserOperationUserIcon" :src="userIconSrc" @click="userCenter" />
+        <img
+          id="phoneUserOperationUserIcon"
+          :src="userIconSrc"
+          @click="userCenter"
+        />
       </div>
       <p @click="page1Link">{{ page1 }}</p>
       <p @click="page2Link">{{ page2 }}</p>
@@ -38,23 +49,25 @@
       <p @click="page5Link">{{ page5 }}</p>
     </div>
 
-    <div id="overlay" @click="closePhoneNav" :style="{ display: isPhoneNavOpen ? 'block' : 'none' }"></div>
+    <div
+      id="overlay"
+      @click="closePhoneNav"
+      :style="{ display: isPhoneNavOpen ? 'block' : 'none' }"
+    ></div>
     <!-- 手機版選單 結束 -->
     <!-- <div id="background"> -->
-      <!-- <div id="backgroundLeftImg"></div> -->
-      <!-- <div id="backgroundRightImg"></div> -->
-      <!-- 主要區塊 開始 -->
-      <!-- <main></main> -->
-      <!-- 主要區塊 結束 -->
+    <!-- <div id="backgroundLeftImg"></div> -->
+    <!-- <div id="backgroundRightImg"></div> -->
+    <!-- 主要區塊 開始 -->
+    <!-- <main></main> -->
+    <!-- 主要區塊 結束 -->
     <!-- </div> -->
   </div>
 </template>
 
 <script setup >
-import { ref, reactive } from 'vue'
-import router from '/src/router/index';
-
-
+import { ref, reactive } from "vue";
+import router from "/src/router/index";
 
 
 // 使用者中心圖片url
@@ -65,12 +78,12 @@ const userIconSrc = ref("/pic/base/userCircle.svg");
 const togglePhoneNav = (event) => {
   isPhoneNavOpen.value = !isPhoneNavOpen.value;
   event.stopPropagation();
-}
+};
 
 const closePhoneNav = () => {
   isPhoneNavOpen.value = false;
   // 其他邏輯...
-}
+};
 //使用者中心彈窗
 const isUserCenterPopupOpen = ref(false);
 const popupMessage = "This is the user center popup content...";
@@ -85,7 +98,7 @@ const userCenter = (event) => {
   // 在點擊用戶中心時，添加點擊事件監聽器
   document.addEventListener("click", handleDocumentClick);
   // handleDocumentClick(event);
-}
+};
 const closeUserCenterPopup = () => {
   // alert(TEST);
   // 關閉用戶中心彈窗
@@ -93,44 +106,43 @@ const closeUserCenterPopup = () => {
 
   // 移除點擊事件監聽器
   document.removeEventListener("click", handleDocumentClick);
-}
+};
 const handleDocumentClick = (event) => {
   // alert("test");
   // 如果用戶中心彈窗是打開的，並且點擊不在用戶中心元素上，則關閉彈窗
   if (
-    isUserCenterPopupOpen.value
-    && !userCenter.value?.contains(event.target)
+    isUserCenterPopupOpen.value &&
+    !userCenter.value?.contains(event.target)
   ) {
     closeUserCenterPopup();
   }
-}
+};
 
 //分頁內容以及跳轉到的頁面
 const page1 = "首頁";
 const page1Link = () => {
-  router.push({ name: "App2" })
-}
+  router.push({ name: "App2" });
+};
 const page2 = "揪團";
 const page2Link = () => {
-  router.push({ name: "App2" })
-}
+  router.push({ name: "activity" });
+};
 const page3 = "論壇";
 const page3Link = () => {
-  router.push({ name: "App2" })
-}
+  router.push({ name: "forum" });
+};
 const page4 = "待補";
 const page4Link = () => {
-  router.push({ name: "App2" })
-}
+  router.push({ name: "App2" });
+};
 const page5 = "待補";
 const page5Link = () => {
-  router.push({ name: "App2" })
-}
-
+  router.push({ name: "App2" });
+};
 </script>
 <!-- 影響父層的style，慎用 -->
 <style>
-body{
+body {
   background-color: #ebebeb;
 }
 </style>
@@ -158,10 +170,15 @@ body{
   align-items: center;
 }
 
-body {
-  font-family: "Noto Sans TC", sans-serif;
-
+.icon {
+  width: 40px;
+  height: 40px;
 }
+
+/* 移到index.vue */
+/* body {
+  font-family: "Noto Sans TC", sans-serif;
+} */
 
 /* 上方導航列 開始 */
 #headerImg {
@@ -170,6 +187,7 @@ body {
 
 #headerBar {
   background-color: #2a2a2a;
+  /* background-color: #223466; */
   height: 50px;
   font-family: "Noto Sans TC", sans-serif;
   font-weight: 300;
@@ -258,7 +276,7 @@ body {
   cursor: pointer;
 }
 
-#headerBarUserOperation input:focus+#headerBarUserOperationSearchIcon {
+#headerBarUserOperation input:focus + #headerBarUserOperationSearchIcon {
   content: url("/pic/base/blackSearch.svg");
   transform: scale(1.1);
   left: -25px;
@@ -313,8 +331,6 @@ body {
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
-
-
 
 /* 彈窗 結束 */
 
