@@ -143,7 +143,7 @@ const page5Link = () => {
 <!-- 影響父層的style，慎用 -->
 <style>
 body {
-  background-color: #ebebeb;
+  background-color: #2F2F2F;
 }
 </style>
 <!-- 只影響到自己的style -->
