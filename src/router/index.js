@@ -3,6 +3,7 @@ import index from "../views/index.vue"
 import App2 from "../views/App2.vue"
 import forum from "../views/forum.vue"
 import activity from "../views/activity.vue"
+import login from "../views/login.vue"
 
 const router = new createRouter({
     history: createWebHistory(),
@@ -10,7 +11,8 @@ const router = new createRouter({
       { path: "/", name: "index", component:index},
       { path: "/forum", name: "forum", component: forum },
       { path: "/activity", name: "activity", component: activity },
-      { path: "/App2", name: "App2", component: App2 }
+      { path: "/App2", name: "App2", component: App2 },
+      { path: "/login", name: "login", component: login }
     
     ],
   });
