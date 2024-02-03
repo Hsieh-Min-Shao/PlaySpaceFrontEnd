@@ -20,11 +20,7 @@
       <nav id="headerBarUserOperation">
         <input type="text" />
         <img id="headerBarUserOperationSearchIcon" @click="search" />
-        <img
-          id="headerBarUserOperationUserIcon"
-          :src="userIconSrc"
-          @click="userCenter"
-        />
+        <img id="headerBarUserOperationUserIcon" :src="userIconSrc" @click="userCenter" />
       </nav>
     </header>
     <!-- 彈窗程式碼 -->
@@ -36,11 +32,7 @@
     <!-- 手機版選單 開始 -->
     <div id="phoneNav" :style="{ left: isPhoneNavOpen ? '0' : '-200px' }">
       <div id="phoneUserCenter">
-        <img
-          id="phoneUserOperationUserIcon"
-          :src="userIconSrc"
-          @click="userCenter"
-        />
+        <img id="phoneUserOperationUserIcon" :src="userIconSrc" @click="userCenter" />
       </div>
       <p @click="page1Link">{{ page1 }}</p>
       <p @click="page2Link">{{ page2 }}</p>
@@ -49,11 +41,7 @@
       <p @click="page5Link">{{ page5 }}</p>
     </div>
 
-    <div
-      id="overlay"
-      @click="closePhoneNav"
-      :style="{ display: isPhoneNavOpen ? 'block' : 'none' }"
-    ></div>
+    <div id="overlay" @click="closePhoneNav" :style="{ display: isPhoneNavOpen ? 'block' : 'none' }"></div>
     <!-- 手機版選單 結束 -->
     <!-- <div id="background"> -->
     <!-- <div id="backgroundLeftImg"></div> -->
@@ -142,12 +130,16 @@ const page5Link = () => {
 </script>
 <!-- 影響父層的style，慎用 -->
 <style>
-body {
-  background-color: #2F2F2F;
+:root {
+  --blockColor: rgb(55, 55, 55);
+  --backGroundColor: #2a2a2a;
+  --textColor: whitesmoke;
 }
-</style>
-<!-- 只影響到自己的style -->
-<style scoped>
+
+body {
+  background-color: var(--backGroundColor);
+}
+
 /* 通用設定 */
 .flexWrap {
   display: flex;
@@ -169,7 +161,9 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+</style>
+<!-- 只影響到自己的style -->
+<style scoped>
 .icon {
   width: 40px;
   height: 40px;
@@ -186,7 +180,7 @@ body {
 }
 
 #headerBar {
-  background-color: #2a2a2a;
+  background-color: var(--backGroundColor);
   /* background-color: #223466; */
   height: 50px;
   font-family: "Noto Sans TC", sans-serif;
@@ -249,7 +243,7 @@ body {
   border-radius: 5px;
   border-style: none;
   border: 1px white solid;
-  background-color: #2a2a2a;
+  background-color: var(--backGroundColor);
   color: white;
   transition: transform 0.3s ease-in-out;
 
@@ -264,6 +258,7 @@ body {
   color: #000;
   transform: scale(1.1);
   line-height: 30px;
+  outline: none;
 }
 
 #headerBarUserOperationSearchIcon {
@@ -276,7 +271,7 @@ body {
   cursor: pointer;
 }
 
-#headerBarUserOperation input:focus + #headerBarUserOperationSearchIcon {
+#headerBarUserOperation input:focus+#headerBarUserOperationSearchIcon {
   content: url("/pic/base/blackSearch.svg");
   transform: scale(1.1);
   left: -25px;
