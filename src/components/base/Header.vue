@@ -134,6 +134,7 @@ const page5Link = () => {
   --blockColor: rgb(55, 55, 55);
   --backGroundColor: #2a2a2a;
   --textColor: whitesmoke;
+  --btnColor1:#ff8762;
 }
 
 body {
