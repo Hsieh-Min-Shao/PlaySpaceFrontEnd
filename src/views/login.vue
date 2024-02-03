@@ -1,7 +1,7 @@
 <template>
   <!-- <Header></Header> -->
   <div class="login">
-    <form class="login_box" @submit.prevent="login">
+    <div class="login_box" @submit.prevent="login">
       <div class="login_title">
         <!-- <img src="/pic/base/logo.png" alt="Logo" class="logo_pic" /> -->
         <h3>登入</h3>
@@ -28,6 +28,7 @@
         type="submit"
         :disabled="!username || !password"
         class="btn-login"
+        @click="login"
       >
         登入
       </button>
@@ -35,40 +36,60 @@
         <div id="register">還沒有帳號嗎？<a href="#">我要註冊</a></div>
       </div>
       <div class="form-item horizontal">
-        <button
-          type="submit"
-          :disabled="!username || !password"
-          class="btn-sso"
-        >
+        <button type="submit" class="btn-sso">
           <img src="/pic/base/google.png" class="sso-icon" />
           使用Google登入
         </button>
-        <button
-          type="submit"
-          :disabled="!username || !password"
-          class="btn-sso"
-        >
+        <button type="submit" class="btn-sso">
           <i class="fab fa-line"></i>
           使用Line登入
         </button>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-// import Header from "../components/base/Header.vue";
+import axios from 'axios';
 
 const username = ref("");
 const password = ref("");
 const remember = ref(false);
 const sysConf = ref({ SystemName: "系統名稱" }); // 假設的系統配置，請根據實際需要調整
 
-const login = () => {
-  console.log("Login:", username.value, password.value);
-  // 實現登入邏輯
-};
+const login = async () => {
+ // 检查用户名和密码是否输入
+  if (!username.value || !password.value) {
+    alert("請輸入帳號或密碼");
+    return;
+  }
+  try {
+    // 发送POST请求到登录接口
+    const response = await axios.post('http://localhost:8989/login', {
+      username: username.value,
+      password: password.value,
+      remember: remember.value,
+    });
+
+    console.log(username.value);
+     console.log(password.value);
+
+    // 登录成功处理逻辑
+    console.log("登录成功", response.data);
+    // 假设后端返回的数据中有token
+    // 保存token到localStorage或者Vuex等状态管理库
+    // localStorage.setItem('token', response.data.token);
+
+    // 根据需要跳转到其他页面或更新UI
+    // router.push('/home'); // 如果使用了vue-router
+
+  } catch (error) {
+    // 处理登录失败
+    console.error("登录失败", error);
+    // 显示错误消息
+    // 你可以根据error.response.data来获取后端返回的具体错误信息
+}};
 </script>
 
 <style scoped>
