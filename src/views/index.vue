@@ -3,15 +3,20 @@
 <template>
   <Header></Header>
   <div id="indexDiv" class="flexWrap">
-    <div id="homeDiv"></div>
+    <div id="homeDiv">
+      <HomePage></HomePage>
+    </div>
     <div id="blankDiv"></div>
-    <div id="sideBarDiv"><SideBar></SideBar></div>
+    <div id="sideBarDiv">
+      <SideBar></SideBar>
+    </div>
   </div>
 </template>
 
 <script setup>
 import Header from "../components/base/Header.vue";
 import SideBar from "../components/base/sideBar.vue";
+import HomePage from "../components/index/homePage.vue";
 </script>
 
 <style>
@@ -33,13 +38,24 @@ body {
 }
 
 #homeDiv {
-  width: 60%;
+  width: 65%;
 }
 
-#blankDiv{
-  width: 10%;
+#blankDiv {
+  width: 5%;
 }
 
 #sideBarDiv {
   width: 30%;
-}</style>
+}
+
+@media screen and (max-width: 800px) {
+  #blankDiv,#sideBarDiv {
+  display: none;
+}
+#homeDiv {
+  width: 100%;
+}
+
+}
+</style>
