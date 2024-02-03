@@ -1,8 +1,9 @@
 <template>
+  <!-- <Header></Header> -->
   <div class="login">
     <form class="login_box" @submit.prevent="login">
       <div class="login_title">
-        <img src="/pic/base/logo.png" alt="Logo" class="logo_pic" />
+        <!-- <img src="/pic/base/logo.png" alt="Logo" class="logo_pic" /> -->
         <h3>登入</h3>
       </div>
       <div class="form-item">
@@ -38,14 +39,16 @@
           type="submit"
           :disabled="!username || !password"
           class="btn-sso"
-        > <img src="/pic/base/google.png" class="sso-icon">
+        >
+          <img src="/pic/base/google.png" class="sso-icon" />
           使用Google登入
         </button>
         <button
           type="submit"
           :disabled="!username || !password"
           class="btn-sso"
-        > <i class="fab fa-line"></i> 
+        >
+          <i class="fab fa-line"></i>
           使用Line登入
         </button>
       </div>
@@ -55,6 +58,7 @@
 
 <script setup>
 import { ref } from "vue";
+// import Header from "../components/base/Header.vue";
 
 const username = ref("");
 const password = ref("");
@@ -97,6 +101,7 @@ const login = () => {
 }
 
 .form-item label {
+  color: var(--textColor);
   margin-top: 10px; /* 为标签和输入框之间添加一些间距 */
 }
 
@@ -110,7 +115,7 @@ const login = () => {
 }
 
 h3 {
-  color: #2a2a2a;
+  color: var(--textColor);
 }
 
 .logo_pic {
@@ -132,9 +137,6 @@ h3 {
   max-width: 100%;
 }
 
-
-
-
 /* 帳號密碼輸入框設置結束 */
 
 /* 記住帳號設置開始 */
@@ -153,7 +155,7 @@ h3 {
   margin: 5px 0;
   padding: 8px;
   border-radius: 8px;
-  background: #2a2a2a;
+  background: var(--btnColor1);
 }
 
 /* 登入按鈕結束 */
@@ -162,10 +164,12 @@ h3 {
 #register {
   display: flex;
   justify-content: center;
+  color: var(--textColor);
 }
 
 a {
   text-decoration: none;
+  color: var(--btnColor1);
 }
 
 /* 註冊連結設置結束 */
@@ -192,16 +196,15 @@ a {
 }
 
 .sso-icon {
- max-width: 20px;
- max-height: 18px;
+  max-width: 20px;
+  max-height: 18px;
 }
 
 .fa-line {
-  color: #00B900; /* Line品牌颜色 */
+  color: #00b900; /* Line品牌颜色 */
 }
 
 /* 第三方登入按鈕設置結束 */
-
 
 /* 手機屏幕媒體查詢 */
 @media (max-width: 1000px) {
