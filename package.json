@@ -9,11 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^1.6.7",
-=======
     "socket.io-client": "^4.7.4",
->>>>>>> 9973b05758a83c55a5bece811fe83078e249a3cc
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
