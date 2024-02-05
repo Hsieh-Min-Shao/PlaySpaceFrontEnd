@@ -1,7 +1,7 @@
 <template>
   <div id="base">
     <!-- 上方導航列 開始 -->
-    <img id="headerImg" src="/pic/base/動物吃雞封面圖 1.png" alt="" />
+    <!-- <img id="headerImg" src="/pic/base/動物吃雞封面圖 1.png" alt="" /> -->
     <header id="headerBar" class="flexWrap">
       <nav id="headerBarHamburger" @click="togglePhoneNav">
         <img @click="togglePhoneNav" src="/pic/base/hamburger.svg" />
@@ -109,7 +109,7 @@ const handleDocumentClick = (event) => {
 //分頁內容以及跳轉到的頁面
 const page1 = "首頁";
 const page1Link = () => {
-  router.push({ name: "App2" });
+  router.push({ name: "index" });
 };
 const page2 = "揪團";
 const page2Link = () => {
